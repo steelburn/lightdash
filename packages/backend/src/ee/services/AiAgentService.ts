@@ -26,10 +26,8 @@ export class AiAgentService {
     private readonly featureFlagService: FeatureFlagService;
 
     constructor(dependencies: AiAgentServiceDependencies) {
-        // models
         this.aiAgentModel = dependencies.aiAgentModel;
         this.slackAuthenticationModel = dependencies.slackAuthenticationModel;
-        // services
         this.featureFlagService = dependencies.featureFlagService;
     }
 
