@@ -2,7 +2,6 @@ import { type BaseAiAgent } from '@lightdash/common';
 import {
     Button,
     Card,
-    Fieldset,
     Group,
     MantineProvider,
     MultiSelect,
@@ -41,6 +40,7 @@ import {
 } from '../hooks/useAiAgents';
 import { AgentAvatar } from './AgentAvatar';
 import { ConversationsList } from './ConversationsList';
+import { SlackIntegrationSteps } from './SlackIntegrationSteps';
 
 const formSchema: z.ZodType<
     Pick<BaseAiAgent, 'name' | 'projectUuid' | 'integrations' | 'tags'>
@@ -287,13 +287,25 @@ export const AgentDetails: FC = () => {
                                         {/* Integrations Section */}
 
                                         <Stack gap="sm">
-                                            <Group justify="space-between">
-                                                <Title order={5}>
-                                                    Integrations
-                                                </Title>
-                                            </Group>
+                                            <Title order={5}>
+                                                Integrations
+                                            </Title>
 
-                                            <Fieldset legend="Slack">
+                                            <Stack gap="md">
+                                                <Title order={6}>Slack</Title>
+
+                                                <SlackIntegrationSteps
+                                                    slackInstallation={
+                                                        !!slackInstallation?.organizationUuid
+                                                    }
+                                                    channelsConfigured={form.values.integrations.some(
+                                                        (i) =>
+                                                            i.type ===
+                                                                'slack' &&
+                                                            i.channelId,
+                                                    )}
+                                                />
+
                                                 <MultiSelect
                                                     disabled={
                                                         !slackInstallation?.organizationUuid
@@ -357,7 +369,7 @@ export const AgentDetails: FC = () => {
                                                         );
                                                     }}
                                                 />
-                                            </Fieldset>
+                                            </Stack>
                                         </Stack>
 
                                         <Group justify="flex-end">
