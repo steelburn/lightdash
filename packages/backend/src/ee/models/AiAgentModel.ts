@@ -43,7 +43,7 @@ export class AiAgentModel {
     }: {
         organizationUuid: string;
         agentUuid: string;
-    }): Promise<AiAgent> {
+    }): Promise<AiAgentSummary> {
         const agent = await this.database(AiAgentTableName)
             .select({
                 uuid: `${AiAgentTableName}.ai_agent_uuid`,
@@ -97,7 +97,7 @@ export class AiAgentModel {
         organizationUuid,
     }: {
         organizationUuid: string;
-    }): Promise<AiAgent[]> {
+    }): Promise<AiAgentSummary[]> {
         const rows = await this.database(AiAgentTableName)
             .select({
                 uuid: `${AiAgentTableName}.ai_agent_uuid`,
@@ -122,7 +122,7 @@ export class AiAgentModel {
                 `),
                 updatedAt: `${AiAgentTableName}.updated_at`,
                 createdAt: `${AiAgentTableName}.created_at`,
-            } satisfies Record<keyof AiAgent, unknown>)
+            } satisfies Record<keyof AiAgentSummary, unknown>)
             .leftJoin(
                 AiAgentIntegrationTableName,
                 `${AiAgentTableName}.ai_agent_uuid`,
