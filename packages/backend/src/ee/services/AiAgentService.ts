@@ -173,6 +173,7 @@ export class AiAgentService {
             organizationUuid,
             tags: body.tags,
             integrations: body.integrations,
+            instruction: body.instruction,
         });
 
         return agent;
@@ -199,6 +200,7 @@ export class AiAgentService {
             organizationUuid,
             tags: body.tags,
             integrations: body.integrations,
+            instruction: body.instruction,
         });
 
         return updatedAgent;
