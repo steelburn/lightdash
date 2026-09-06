@@ -1,3 +1,10 @@
+## [2.134.2](https://github.com/lightdash/lightdash/compare/2.134.1...2.134.2) (2026-09-06)
+
+
+### Bug Fixes
+
+* **frontend:** format move dialog content types ([#28706](https://github.com/lightdash/lightdash/issues/28706)) ([3d38d6c](https://github.com/lightdash/lightdash/commit/3d38d6c76bce5026453fadd388eec1b2c9f62438))
+
 ## [2.134.1](https://github.com/lightdash/lightdash/compare/2.134.0...2.134.1) (2026-09-04)
 
 
